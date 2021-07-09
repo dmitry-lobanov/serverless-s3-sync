@@ -315,7 +315,7 @@ class ServerlessS3Sync {
                 ...contentTypeObject,
                 ...file.params,
                 ...{
-                  CopySource: toS3Path(file.name.replace(path.resolve(localDir) + path.sep, `${bucketName}${bucketPrefix == '' ? '' : bucketPrefix}/`)),
+                  CopySource: encodeURIComponent(toS3Path(file.name.replace(path.resolve(localDir) + path.sep, `${bucketName}${bucketPrefix == '' ? '' : bucketPrefix}/`))),
                   Key: toS3Path(file.name.replace(path.resolve(localDir) + path.sep, '')),
                   Bucket: bucketName,
                   ACL: acl,
